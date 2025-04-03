@@ -7,6 +7,8 @@ import 'package:ny_cricket_app/app/utils/helpers/getItHook/getit_hook.dart';
 
 class QuizPage extends GetItHook<HomeController> {
   final String matchId = Get.arguments;
+    final Stopwatch _quizTimer = Stopwatch();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,7 +137,7 @@ class QuizPage extends GetItHook<HomeController> {
             ? null
             : () {
                 question.selectedAnswer = option.id.toString();
-                controller.submitQuiz();
+                controller.submitQuiz(matchId);
               },
         child: Container(
           width: double.infinity,
@@ -215,11 +217,20 @@ class QuizPage extends GetItHook<HomeController> {
   bool get canDisposeController => false;
 
   @override
-  void onDispose() {}
+  void onDispose() {
+    _quizTimer.stop();
+  }
+
+  String get elapsedTime {
+    // Format the elapsed time as HH:MM:SS
+    return _quizTimer.elapsed.toString().split('.').first.padLeft(8, '0');
+  }
+
 
   @override
   void onInit() {
     controller.currentQuestionIndex.value = 0;
     controller.getQuizApi(matchId);
+    _quizTimer.start();
   }
 }

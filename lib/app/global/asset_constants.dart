@@ -14,11 +14,13 @@ class AssetConstants {
   static String icNotification = Assets.images.icons.icNotification.path;
   static String icMessage = Assets.images.icons.icMessage.path;
   static String icCricketBat = Assets.images.icons.icCricketBat.path;
-  static String icCamera = Assets.images.icons.icCamera.path;
+  static String icCamera = Assets.images.icons.icCameraPng.path;
   static String icEditProfile = Assets.images.icons.icEditProfile.path;
   static String icSetting = Assets.images.icons.icSetting.path;
   static String icMatchHistory = Assets.images.icons.icMatchHistory.path;
   static String icCopy = Assets.images.icons.icCopy.path;
+  static String icCameraSvg = Assets.images.icons.icCameraSvg;
+  static String icGallery = Assets.images.icons.icGallery;
 
   //pngs
   static String pngNotFound = Assets.images.pngs.pngNotFound.path;

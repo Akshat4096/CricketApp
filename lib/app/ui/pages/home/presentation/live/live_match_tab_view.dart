@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:ny_cricket_app/app/controller/home_controller.dart';
 import 'package:ny_cricket_app/app/global/asset_constants.dart';
 import 'package:ny_cricket_app/app/ui/pages/home/widgets/match_card.dart';
@@ -28,6 +29,7 @@ class LiveMatchTabView extends GetItHook<HomeController> {
                       padding: EdgeInsets.only(top: 16.0.h),
                       itemBuilder: (context, index) {
                         var event = filteredEvents[index].eventName;
+                        var eventDateTime = filteredEvents[index].time ;
                         List<String> teams = event.toString().split(" v");
                         String team1Name =
                             teams.isNotEmpty ? teams[0].trim() : "Team 1";
@@ -38,8 +40,27 @@ class LiveMatchTabView extends GetItHook<HomeController> {
                               horizontal: 16.0.w, vertical: 11.5.h),
                           child: InkWell(
                             onTap: () {
-                              Get.toNamed(AppRoutes.liveMatchDetailsPage,
-                                  arguments: filteredEvents[index].eventId);
+                              DateTime eventISTTime =
+                                  DateTime.parse(eventDateTime)
+                                      .toUtc()
+                                      .add(Duration(hours: 5, minutes: 30));
+                              DateTime nowIST = DateTime.now()
+                                  .toUtc()
+                                  .add(Duration(hours: 5, minutes: 30));
+
+                              if (nowIST.isAfter(eventISTTime) ||
+                                  nowIST.isAtSameMomentAs(eventISTTime)) {
+                                Get.toNamed(AppRoutes.liveMatchDetailsPage,
+                                    arguments: filteredEvents[index].eventId);
+                              } else {
+                                Get.snackbar(
+                                  "Match Info",
+                                  "Match will start at ${DateFormat('hh:mm a').format(eventISTTime)}",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.black,
+                                  colorText: Colors.white,
+                                );
+                              }
                               // if (adController.isRewardedAdLoaded.value) {
                               //   adController.rewardedAd!.show(
                               //     onUserEarnedReward:
@@ -59,6 +80,7 @@ class LiveMatchTabView extends GetItHook<HomeController> {
                             child: MatchCard(
                               key: ValueKey('MatchCard_$index'),
                               title: event.toString(),
+                              eventTime: eventDateTime!,
                               bowlingTeam: '',
                               opinionCount: '',
                               team1Overs: '',
@@ -78,6 +100,24 @@ class LiveMatchTabView extends GetItHook<HomeController> {
         ],
       );
     });
+  }
+
+   bool isCurrentTimeMatching(String utcTime) {
+    DateTime utcDateTime = DateTime.parse(utcTime).toUtc();
+    DateTime istDateTime = utcDateTime.add(Duration(hours: 5, minutes: 30));
+
+    DateTime nowIST =
+        DateTime.now().toUtc().add(Duration(hours: 5, minutes: 30));
+
+    // Check if the event time matches the current IST time (ignoring seconds)
+    return DateFormat('dd MMM yyyy, hh:mm a').format(istDateTime) ==
+        DateFormat('dd MMM yyyy, hh:mm a').format(nowIST);
+  }
+  String formatToIST(String utcTime) {
+    DateTime utcDateTime = DateTime.parse(utcTime).toUtc();
+    DateTime istDateTime = utcDateTime.add(Duration(hours: 5, minutes: 30));
+
+    return DateFormat('hh:mm a').format(istDateTime);
   }
 
   @override

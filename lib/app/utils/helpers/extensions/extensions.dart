@@ -40,6 +40,18 @@ extension SharedPreferencesX on SharedPreferences {
     return getString('intro');
   }
 
+  String? get getprofile {
+    return getString('profile');
+  }
+
+  set setProfile(String? value) {
+    if (value == null) {
+      remove('profile');
+    } else {
+      setString('profile', value);
+    }
+  }
+
   Future<void> clearPreferences() async {
     await clear();
   }

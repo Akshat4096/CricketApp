@@ -18,10 +18,11 @@ class SplashPage extends GetItHook<AppController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+          Image.asset('assets/images/pngs/Logo.png', width: 100, height: 200),
+          Text(
               Lang.of(context).lbl_app_name,
               style: Theme.of(context)
-                  .textTheme
+                    .textTheme
                   .bodyMedium
                   ?.copyWith(fontSize: 20.0.sp, fontWeight: FontWeight.w600),
             )

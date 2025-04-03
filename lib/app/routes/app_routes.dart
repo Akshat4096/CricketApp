@@ -12,4 +12,5 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String liveMatchDetailsPage = '/livematchdetailpage';
   static const String quizPage = '/quizpage';
+  static const String editprofilePage = '/editprofilepage';
 }

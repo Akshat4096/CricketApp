@@ -40,6 +40,7 @@ class UpcomingMatchTabView extends GetItHook<HomeController> {
                       padding: EdgeInsets.only(top: 16.0.h),
                       itemBuilder: (context, index) {
                         var event = filteredEvents[index].eventName;
+                        var eventDateTime = filteredEvents[index].time;  
                         List<String> teams = event.toString().split(" v");
                         String team1Name =
                             teams.isNotEmpty ? teams[0].trim() : "Team 1";
@@ -54,6 +55,7 @@ class UpcomingMatchTabView extends GetItHook<HomeController> {
                             child: UpcomingMatchCard(
                               key: ValueKey('MatchCard_$index'),
                               title: event.toString(),
+                              eventTime: eventDateTime!,
                               team1Name: team1Name,
                               team1Flag: AssetConstants.pngEngland,
                               team2Name: team2Name,

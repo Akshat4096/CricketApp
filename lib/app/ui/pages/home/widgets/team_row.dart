@@ -3,6 +3,7 @@ import 'package:ny_cricket_app/app/utils/helpers/dimenson.dart';
 import 'package:ny_cricket_app/app/utils/helpers/exporter.dart';
 
 class TeamRow extends StatelessWidget {
+  final bool isCompleted;
   final String flag;
   final String name;
   final String score;
@@ -10,6 +11,7 @@ class TeamRow extends StatelessWidget {
 
   const TeamRow({
     super.key,
+    this.isCompleted = false,
     required this.flag,
     required this.name,
     required this.score,
@@ -23,7 +25,7 @@ class TeamRow extends StatelessWidget {
 
     return Row(
       children: [
-        _buildTeamFlag(),
+        isCompleted ?  Icon(Icons.flag, color: Colors.white,): _buildTeamFlag(),
         buildSizedboxW(12),
         _buildTeamName(context, textStyle),
         _buildTeamScore(textStyle),
@@ -35,9 +37,9 @@ class TeamRow extends StatelessWidget {
   // Builds the team flag with proper styling and dimensions
   Widget _buildTeamFlag() {
     return CustomImageView(
-        height: 35.h,
+        height: isCompleted ? 5.h : 35.h,
         margin: const EdgeInsets.all(2),
-        imagePath: flag,
+        imagePath: isCompleted ? "assets/images/ic_cricket_bat.png" : flag ,
         fit: BoxFit.cover,
         radius: BorderRadius.circular(24.0.r));
   }

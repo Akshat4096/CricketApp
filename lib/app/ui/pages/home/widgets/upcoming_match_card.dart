@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:ny_cricket_app/app/generated/l10n.dart';
 import 'package:ny_cricket_app/app/ui/pages/home/widgets/team_row.dart';
 import 'package:ny_cricket_app/app/utils/helpers/dimenson.dart';
@@ -5,6 +6,7 @@ import 'package:ny_cricket_app/app/utils/helpers/exporter.dart';
 
 class UpcomingMatchCard extends StatelessWidget {
   final String title;
+  final String eventTime ;
   final String team1Name;
   final String team1Flag;
   final String team2Name;
@@ -12,6 +14,7 @@ class UpcomingMatchCard extends StatelessWidget {
 
   const UpcomingMatchCard({
     super.key,
+    required this.eventTime,
     required this.title,
     required this.team1Name,
     required this.team1Flag,
@@ -32,18 +35,30 @@ class UpcomingMatchCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0.r),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildTitleRow(context, customColors, textStyle),
-          buildSizedBoxH(16),
-          TeamRow(flag: team1Flag, name: team1Name, score: '', overs: ''),
-          _buildVsLabel(context),
-          TeamRow(flag: team2Flag, name: team2Name, score: ''),
-        ],
-      ),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildTitleRow(context, customColors, textStyle),
+        buildSizedBoxH(16),
+        TeamRow(flag: team1Flag, name: team1Name, score: '', overs: ''),
+        _buildVsLabel(context),
+        TeamRow(flag: team2Flag, name: team2Name, score: ''),
+        buildSizedBoxH(16),
+        Text(
+          formatToIST(eventTime),
+          style: textStyle?.copyWith(
+            fontSize: 14.0.sp,
+          ),
+        )
+      ],
+              ),
     );
   }
+String formatToIST(String utcTime) {
+    DateTime utcDateTime = DateTime.parse(utcTime).toUtc();
+    DateTime istDateTime = utcDateTime.add(Duration(hours: 5, minutes: 30));
 
+    return DateFormat('dd MMM yyyy, hh:mm a').format(istDateTime);
+  }
   Row _buildTitleRow(
       BuildContext context, CustomColors customColors, TextStyle? textStyle) {
     return Row(

@@ -122,13 +122,29 @@ class HomeController extends GetxController {
       Loading.dismiss();
     }
   }
-
-  void submitQuiz() async {
+  final selectedOptions = <Map<String, dynamic>>[].obs;
+  final elapsedTime = '00:00:00'.obs;
+  final quizScore = 0.obs;
+  final quizAttempts = 1.obs;
+  void submitQuiz(String matchId) async {
     try {
       var currentQuestion = questions[currentQuestionIndex.value];
-
+       selectedOptions.add({
+        "question_id": currentQuestion.quizId,
+        "answer": int.parse(currentQuestion.selectedAnswer ?? '0'),
+      });
       HomeRepository homeRepository = HomeRepository(apiClient: ApiClient());
+
+    //  SubmitQuizModel submitQuizModel = await homeRepository.submitQuizApi(
+    //     matchId: int.parse(matchId),
+    //     userId: 1, // Get from auth
+    //     score: quizScore.value,
+    //     numberOfAttempt: quizAttempts.value,
+    //     selectedOptions: selectedOptions,
+    //     time: elapsedTime.value, // Pass the elapsed time
+    //   );
       SubmitQuizModel submitQuizModel = await homeRepository.submitQuizApi(
+        
         quizid: currentQuestion.quizId,
         optionid: int.parse(currentQuestion.selectedAnswer ?? '0'),
       );

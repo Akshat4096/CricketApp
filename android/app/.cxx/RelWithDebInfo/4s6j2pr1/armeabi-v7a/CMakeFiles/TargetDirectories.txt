@@ -1,0 +1,2 @@
+D:/flutter/INDICORTEX/CricketApp/ny_cricket_app/android/app/.cxx/RelWithDebInfo/4s6j2pr1/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/flutter/INDICORTEX/CricketApp/ny_cricket_app/android/app/.cxx/RelWithDebInfo/4s6j2pr1/armeabi-v7a/CMakeFiles/rebuild_cache.dir

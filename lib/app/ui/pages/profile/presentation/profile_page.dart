@@ -1,4 +1,5 @@
 import 'package:ny_cricket_app/app/controller/profile_controller.dart';
+import 'package:ny_cricket_app/app/data/api_endpoints/api_end_points.dart';
 import 'package:ny_cricket_app/app/generated/l10n.dart';
 import 'package:ny_cricket_app/app/global/asset_constants.dart';
 import 'package:ny_cricket_app/app/ui/pages/profile/widgets/profile_page_shimmer.dart';
@@ -71,17 +72,14 @@ class ProfilePage extends GetItHook<ProfileController> {
             ),
             child: ClipOval(
               child: CustomImageView(
-                margin: EdgeInsets.all(4),
-                imagePath: AssetConstants.pngSuccess,
+                imagePath: controller.profileData.value?.data.profileImage ==
+                            null ||
+                        controller.profileData.value?.data.profileImage == ''
+                    ? AssetConstants.pngSuccess
+                    : AppConfig.mainUrl +
+                        (controller.profileData.value?.data.profileImage ?? ''),
+                fit: BoxFit.cover,
               ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: CustomImageView(
-              imagePath: AssetConstants.icCamera,
-              height: 30.h,
             ),
           ),
         ],
@@ -112,7 +110,13 @@ class ProfilePage extends GetItHook<ProfileController> {
                   ?.copyWith(fontSize: 16.0.sp),
             )),
         const SizedBox(width: 8),
-        CustomImageView(imagePath: AssetConstants.icEditProfile, height: 22.h),
+        CustomImageView(
+          imagePath: AssetConstants.icEditProfile,
+          height: 22.h,
+          onTap: () {
+            Get.toNamed(AppRoutes.editprofilePage);
+          },
+        ),
       ],
     );
   }

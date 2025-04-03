@@ -111,8 +111,8 @@ class SigninPage extends GetItHook<AuthController> {
           buildSizedBoxH(21),
           _buildortext(context),
           buildSizedBoxH(28),
-          _buildSocailMedia(),
-          buildSizedBoxH(35),
+          // _buildSocailMedia(),
+          // buildSizedBoxH(35),
           _buildDontHaveAnAccount(context),
           buildSizedBoxH(16),
         ],
@@ -184,30 +184,32 @@ class SigninPage extends GetItHook<AuthController> {
     );
   }
 
-  Widget _buildSocailMedia() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CustomImageView(
-          imagePath: AssetConstants.icGoogle,
-          onTap: () {},
-          height: 50.0.h,
-        ),
-        buildSizedboxW(23),
-        CustomImageView(
-          imagePath: AssetConstants.icFacebook,
-          onTap: () {},
-          height: 50.0.h,
-        ),
-        buildSizedboxW(23),
-        CustomImageView(
-          imagePath: AssetConstants.icX,
-          height: 50.0.h,
-          onTap: () {},
-        )
-      ],
-    );
-  }
+  // Widget _buildSocailMedia() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       CustomImageView(
+  //         imagePath: AssetConstants.icGoogle,
+  //         onTap: () {
+
+  //         },
+  //         height: 50.0.h,
+  //       ),
+  //       buildSizedboxW(23),
+  //       CustomImageView(
+  //         imagePath: AssetConstants.icFacebook,
+  //         onTap: () {},
+  //         height: 50.0.h,
+  //       ),
+  //       buildSizedboxW(23),
+  //       CustomImageView(
+  //         imagePath: AssetConstants.icX,
+  //         height: 50.0.h,
+  //         onTap: () {},
+  //       )
+  //     ],
+  //   );
+  // }
 
   Widget _buildDontHaveAnAccount(BuildContext context) {
     return Align(

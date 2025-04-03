@@ -76,7 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lbl_already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an Account?",
     ),
-    "lbl_app_name": MessageLookupByLibrary.simpleMessage("Cricket App"),
+    "lbl_app_name": MessageLookupByLibrary.simpleMessage("The Match Live"),
     "lbl_balls": MessageLookupByLibrary.simpleMessage("Balls"),
     "lbl_batter": MessageLookupByLibrary.simpleMessage("Batter"),
     "lbl_bowler": MessageLookupByLibrary.simpleMessage("Bowler"),

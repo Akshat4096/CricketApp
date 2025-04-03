@@ -865,6 +865,71 @@ class Lang {
     return Intl.message('Quiz', name: 'lbl_quiz', desc: '', args: []);
   }
 
+  /// `Edit profile`
+  String get lbl_edit_profile {
+    return Intl.message(
+      'Edit profile',
+      name: 'lbl_edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get lbl_save_changes {
+    return Intl.message(
+      'Save Changes',
+      name: 'lbl_save_changes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to pick an image`
+  String get lbl_failed_to_pick_an_image {
+    return Intl.message(
+      'Failed to pick an image',
+      name: 'lbl_failed_to_pick_an_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capture or Select image`
+  String get lbl_capture_or_select_image {
+    return Intl.message(
+      'Capture or Select image',
+      name: 'lbl_capture_or_select_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose an Action`
+  String get lbl_choose_an_action {
+    return Intl.message(
+      'Choose an Action',
+      name: 'lbl_choose_an_action',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Camera`
+  String get lbl_camera {
+    return Intl.message('Camera', name: 'lbl_camera', desc: '', args: []);
+  }
+
+  /// `Gallery`
+  String get lbl_gallery {
+    return Intl.message('Gallery', name: 'lbl_gallery', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get lbl_cancel {
+    return Intl.message('Cancel', name: 'lbl_cancel', desc: '', args: []);
+  }
+
   /// `Please Enter your Email Address to Receive a Verification Card.`
   String get msg_please_enter_email_address {
     return Intl.message(

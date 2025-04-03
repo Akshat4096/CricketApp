@@ -1,7 +1,7 @@
 {
 	"@@locale": "en",
 	
-	"lbl_app_name":"Cricket App",
+	"lbl_app_name":"The Match Live",
 
 
 	"err_connection_timeout_description": "Oops! It seems the connection timed out. Please check your internet connection and try again.",

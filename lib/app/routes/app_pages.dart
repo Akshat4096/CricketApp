@@ -8,6 +8,7 @@ import 'package:ny_cricket_app/app/ui/pages/home/presentation/live/live_match_de
 import 'package:ny_cricket_app/app/ui/pages/home/presentation/live/quiz_page.dart';
 import 'package:ny_cricket_app/app/ui/pages/onboarding/presentation/onboarding_screen.dart';
 import 'package:ny_cricket_app/app/ui/pages/onboarding/presentation/onboarding_start_page.dart';
+import 'package:ny_cricket_app/app/ui/pages/profile/presentation/edit_profile_page.dart';
 import 'package:ny_cricket_app/app/ui/pages/profile/presentation/profile_page.dart';
 import 'package:ny_cricket_app/app/ui/pages/splash/pages/splash_page.dart';
 import 'package:ny_cricket_app/app/utils/helpers/exporter.dart';
@@ -66,6 +67,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.quizPage,
       page: () => QuizPage(),
+    ),
+     GetPage(
+      name: AppRoutes.editprofilePage,
+      page: () => EditProfilePage(),
     ),
   ];
 }

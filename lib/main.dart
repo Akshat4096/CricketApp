@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
           return ToastificationWrapper(
             child: GetMaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Cricket App',
+              title: 'The Match Live',
               getPages: AppPages.routes,
               initialRoute: AppRoutes.splash,
               localizationsDelegates: const [

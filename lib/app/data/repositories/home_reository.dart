@@ -71,6 +71,39 @@ class HomeRepository {
     }
   }
 
+  // Future<SubmitQuizModel> submitQuizApi({
+  //   required String time,
+  //   required int matchId,
+  //   required int userId,
+  //   required int score,
+  //   required int numberOfAttempt,
+  //   required List<Map<String, dynamic>> selectedOptions,
+  // }) async {
+  //   try {
+  //     final Map<String, dynamic> postData = {
+  //       "time": time, // You might want to calculate actual time
+  //       "match": matchId,
+  //       "user": userId,
+  //       "score": score,
+  //       "selected_option": selectedOptions,
+  //       "number_of_attempt": numberOfAttempt,
+  //     };
+
+  //     var response = await apiClient.request(
+  //       RequestType.POST,
+  //       AppConfig.baseUrl + EndPoints.submitquiz,
+  //       data: postData,
+  //       withoutMessage: true,
+  //     );
+
+  //     return SubmitQuizModel.fromJson(response);
+  //   } catch (e) {
+  //     Logger.log('Error posting submit Quiz data: $e');
+  //     rethrow;
+  //   }
+  // }
+
+
   Future<SubmitQuizModel> submitQuizApi({
     required int quizid,
     required int optionid,

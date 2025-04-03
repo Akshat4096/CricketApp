@@ -27,8 +27,11 @@ class $AssetsImagesIconsGen {
       const AssetGenImage('assets/images/icons/ic_arrow_left.png');
 
   /// File path: assets/images/icons/ic_camera.png
-  AssetGenImage get icCamera =>
+  AssetGenImage get icCameraPng =>
       const AssetGenImage('assets/images/icons/ic_camera.png');
+
+  /// File path: assets/images/icons/ic_camera.svg
+  String get icCameraSvg => 'assets/images/icons/ic_camera.svg';
 
   /// File path: assets/images/icons/ic_copy.png
   AssetGenImage get icCopy =>
@@ -57,6 +60,9 @@ class $AssetsImagesIconsGen {
   /// File path: assets/images/icons/ic_facebook.png
   AssetGenImage get icFacebook =>
       const AssetGenImage('assets/images/icons/ic_facebook.png');
+
+  /// File path: assets/images/icons/ic_gallery.svg
+  String get icGallery => 'assets/images/icons/ic_gallery.svg';
 
   /// File path: assets/images/icons/ic_google.png
   AssetGenImage get icGoogle =>
@@ -90,25 +96,27 @@ class $AssetsImagesIconsGen {
   AssetGenImage get icX => const AssetGenImage('assets/images/icons/ic_x.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-    icArrowLeft,
-    icCamera,
-    icCopy,
-    icCricketBat,
-    icEditProfile,
-    icEmail,
-    icEyeHide,
-    icEyeShow,
-    icFacebook,
-    icGoogle,
-    icMatchHistory,
-    icMessage,
-    icNotification,
-    icPassword,
-    icSetting,
-    icUser,
-    icX,
-  ];
+  List<dynamic> get values => [
+        icArrowLeft,
+        icCameraPng,
+        icCameraSvg,
+        icCopy,
+        icCricketBat,
+        icEditProfile,
+        icEmail,
+        icEyeHide,
+        icEyeShow,
+        icFacebook,
+        icGallery,
+        icGoogle,
+        icMatchHistory,
+        icMessage,
+        icNotification,
+        icPassword,
+        icSetting,
+        icUser,
+        icX,
+      ];
 }
 
 class $AssetsImagesPngsGen {
@@ -138,8 +146,8 @@ class $AssetsImagesPngsAuthenticationGen {
 
   /// File path: assets/images/pngs/authentication/png_forgot_password_header.png
   AssetGenImage get pngForgotPasswordHeader => const AssetGenImage(
-    'assets/images/pngs/authentication/png_forgot_password_header.png',
-  );
+        'assets/images/pngs/authentication/png_forgot_password_header.png',
+      );
 
   /// File path: assets/images/pngs/authentication/png_success.png
   AssetGenImage get pngSuccess =>
@@ -147,15 +155,15 @@ class $AssetsImagesPngsAuthenticationGen {
 
   /// File path: assets/images/pngs/authentication/png_verify_otp_header.png
   AssetGenImage get pngVerifyOtpHeader => const AssetGenImage(
-    'assets/images/pngs/authentication/png_verify_otp_header.png',
-  );
+        'assets/images/pngs/authentication/png_verify_otp_header.png',
+      );
 
   /// List of all assets
   List<AssetGenImage> get values => [
-    pngForgotPasswordHeader,
-    pngSuccess,
-    pngVerifyOtpHeader,
-  ];
+        pngForgotPasswordHeader,
+        pngSuccess,
+        pngVerifyOtpHeader,
+      ];
 }
 
 class $AssetsImagesPngsHomeGen {
@@ -182,25 +190,25 @@ class $AssetsImagesPngsOnboardingGen {
 
   /// File path: assets/images/pngs/onboarding/png_onboarding_one.png
   AssetGenImage get pngOnboardingOne => const AssetGenImage(
-    'assets/images/pngs/onboarding/png_onboarding_one.png',
-  );
+        'assets/images/pngs/onboarding/png_onboarding_one.png',
+      );
 
   /// File path: assets/images/pngs/onboarding/png_onboarding_three.png
   AssetGenImage get pngOnboardingThree => const AssetGenImage(
-    'assets/images/pngs/onboarding/png_onboarding_three.png',
-  );
+        'assets/images/pngs/onboarding/png_onboarding_three.png',
+      );
 
   /// File path: assets/images/pngs/onboarding/png_onboarding_two.png
   AssetGenImage get pngOnboardingTwo => const AssetGenImage(
-    'assets/images/pngs/onboarding/png_onboarding_two.png',
-  );
+        'assets/images/pngs/onboarding/png_onboarding_two.png',
+      );
 
   /// List of all assets
   List<AssetGenImage> get values => [
-    pngOnboardingOne,
-    pngOnboardingThree,
-    pngOnboardingTwo,
-  ];
+        pngOnboardingOne,
+        pngOnboardingThree,
+        pngOnboardingTwo,
+      ];
 }
 
 class Assets {
