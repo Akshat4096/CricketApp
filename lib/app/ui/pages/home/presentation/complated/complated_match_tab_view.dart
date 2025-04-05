@@ -13,7 +13,7 @@ class ComplatedMatchTabView extends GetItHook<HomeController> {
     return Obx(() { 
       var eventData = controller.fetchliveeventData.value?.data ?? [];
       var filteredEvents = eventData.where((event) {
-        return event.eventName.toString().contains("v");
+        return event.name.toString().contains("v");
       }).toList();
       return Column(
         children: [

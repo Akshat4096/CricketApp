@@ -1,7 +1,10 @@
 import 'package:intl/intl.dart';
 import 'package:ny_cricket_app/app/controller/home_controller.dart';
+import 'package:ny_cricket_app/app/generated/l10n.dart';
 import 'package:ny_cricket_app/app/global/asset_constants.dart';
 import 'package:ny_cricket_app/app/ui/pages/home/widgets/match_card.dart';
+import 'package:ny_cricket_app/app/ui/widgets/common/app_button.dart';
+import 'package:ny_cricket_app/app/ui/widgets/common/image_view.dart';
 import 'package:ny_cricket_app/app/utils/helpers/exporter.dart';
 import 'package:ny_cricket_app/app/utils/helpers/getItHook/getit_hook.dart';
 
@@ -12,11 +15,30 @@ class LiveMatchTabView extends GetItHook<HomeController> {
     return Obx(() {
       var eventData = controller.fetchliveeventData.value?.data ?? [];
       var filteredEvents = eventData.where((event) {
-        return event.eventName.toString().contains("v");
+        return event.name.toString().contains("v");
       }).toList();
 
       return Column(
         children: [
+
+          // Testing for quiz 
+          CustomElevatedButton(
+            onPressed: () {
+              Get.toNamed(AppRoutes.quizPage, arguments: '148');
+            },
+            height: 45.0.h,
+            buttonTextStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: ThemeData().customColors.blackColor,
+                  fontSize: 12.0.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+            width: MediaQuery.of(context).size.width * 0.4,
+            text: Lang.of(context).lbl_lets_play,
+            leftIcon: CustomImageView(
+              height: 43.h,
+              imagePath: AssetConstants.pngQuiz,
+            ),
+          ),
           SizedBox(height: 20.0.h),
           Expanded(
             child: SingleChildScrollView(
@@ -28,8 +50,8 @@ class LiveMatchTabView extends GetItHook<HomeController> {
                       physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.only(top: 16.0.h),
                       itemBuilder: (context, index) {
-                        var event = filteredEvents[index].eventName;
-                        var eventDateTime = filteredEvents[index].time ;
+                        var event = filteredEvents[index].name;
+                        var eventDateTime = filteredEvents[index].matchData?.time ?? '2025-03-18T00:00:00Z';
                         List<String> teams = event.toString().split(" v");
                         String team1Name =
                             teams.isNotEmpty ? teams[0].trim() : "Team 1";
@@ -40,6 +62,7 @@ class LiveMatchTabView extends GetItHook<HomeController> {
                               horizontal: 16.0.w, vertical: 11.5.h),
                           child: InkWell(
                             onTap: () {
+                              print('--------------${eventDateTime}');
                               DateTime eventISTTime =
                                   DateTime.parse(eventDateTime)
                                       .toUtc()
@@ -51,7 +74,7 @@ class LiveMatchTabView extends GetItHook<HomeController> {
                               if (nowIST.isAfter(eventISTTime) ||
                                   nowIST.isAtSameMomentAs(eventISTTime)) {
                                 Get.toNamed(AppRoutes.liveMatchDetailsPage,
-                                    arguments: filteredEvents[index].eventId);
+                                    arguments: filteredEvents[index].matchData?.eventId);
                               } else {
                                 Get.snackbar(
                                   "Match Info",
@@ -80,7 +103,7 @@ class LiveMatchTabView extends GetItHook<HomeController> {
                             child: MatchCard(
                               key: ValueKey('MatchCard_$index'),
                               title: event.toString(),
-                              eventTime: eventDateTime!,
+                              eventTime: eventDateTime,
                               bowlingTeam: '',
                               opinionCount: '',
                               team1Overs: '',
@@ -129,5 +152,12 @@ class LiveMatchTabView extends GetItHook<HomeController> {
   @override
   void onInit() {
     controller.fetchliveevents();
+     ever(controller.fetchliveeventData, (value) {
+      if (value != null) {
+        print('API Response: ${value.toJson()}'); // Log full response
+        print('First event matchId: ${value.data?.firstOrNull?.matchData?.eventId }');
+        print('First event time: ${value.data?.firstOrNull?.matchData?.time}');
+      }
+    });
   }
 }

@@ -16,7 +16,7 @@ class UpcomingMatchTabView extends GetItHook<HomeController> {
     return Obx(() {
       var eventData = controller.fetcheventData.value?.data ?? [];
       var filteredEvents = eventData.where((event) {
-        return event.eventName.toString().contains("v");
+        return event.name.toString().contains("v");
       }).toList();
 
       return Column(
@@ -39,8 +39,8 @@ class UpcomingMatchTabView extends GetItHook<HomeController> {
                       physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.only(top: 16.0.h),
                       itemBuilder: (context, index) {
-                        var event = filteredEvents[index].eventName;
-                        var eventDateTime = filteredEvents[index].time;  
+                        var event = filteredEvents[index].name;
+                        var eventDateTime = filteredEvents[index].matchData?.time;  
                         List<String> teams = event.toString().split(" v");
                         String team1Name =
                             teams.isNotEmpty ? teams[0].trim() : "Team 1";
@@ -55,7 +55,7 @@ class UpcomingMatchTabView extends GetItHook<HomeController> {
                             child: UpcomingMatchCard(
                               key: ValueKey('MatchCard_$index'),
                               title: event.toString(),
-                              eventTime: eventDateTime!,
+                              eventTime: eventDateTime ?? '',
                               team1Name: team1Name,
                               team1Flag: AssetConstants.pngEngland,
                               team2Name: team2Name,

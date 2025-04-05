@@ -40,7 +40,7 @@ class LiveMatchDetailsPage extends GetItHook<HomeController> {
     Logger.log(controller.getScoreData.value?.data.toString() ?? 'sds');
     return Scaffold(
       appBar: CustomAppBar(iconcolor: ThemeData().customColors.whiteColor),
-      body: Obx( () =>
+      body: Obx( () =>  
          Column(
           children: [
             if (adController.isRewardedAdLoaded.value)

@@ -9,10 +9,19 @@ import 'package:ny_cricket_app/app/utils/helpers/extensions/extensions.dart';
 import 'package:ny_cricket_app/app/utils/helpers/injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toastification/toastification.dart';
+void main() async{
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-void main() {
   configuration(myApp: const MyApp());
 }
+
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   await Firebase.initializeApp();
+//   print('Handling background message: ${message.messageId}');
+// }
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -57,8 +66,31 @@ class _MyAppState extends State<MyApp> {
         });
   }
 
+  // FirebaseMessaging messaging = FirebaseMessaging.instance;
+  
   @override
   void initState() {
-    super.initState();
+    super.initState();  
+    // Request permission
+    // messaging.requestPermission();
+
+    // // Get token
+    // messaging.getToken().then((token) {
+    //   print('FCM Token: $token');
+    // });
+
+    // // Foreground message
+    // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    //   print('Foreground message: ${message.notification?.title}');
+    // });
+
+    // // When app opened from background
+    // FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    //   print('Notification caused app to open');
+    // });
   }
+
+
+ 
+  
 }

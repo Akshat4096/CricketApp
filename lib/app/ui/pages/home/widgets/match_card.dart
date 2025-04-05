@@ -125,6 +125,7 @@ String formatToIST(String utcTime) {
 
     return DateFormat(' At hh:mm a').format(istDateTime);
   }
+  
   Padding _buildVsLabel(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 6.0.h),
@@ -318,7 +319,6 @@ class _ExpandableMatchCardState extends State<ExpandableMatchCard> {
         children: [
           SizedBox(height: 16.h),
           // Team 1 Leaderboard
-          
           SizedBox(height: 8.h),
           _buildPlayerTable(widget.team1Players),
           

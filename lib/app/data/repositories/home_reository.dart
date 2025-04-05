@@ -1,6 +1,5 @@
 import 'package:ny_cricket_app/app/data/api_client/api_client.dart';
 import 'package:ny_cricket_app/app/data/api_endpoints/api_end_points.dart';
-import 'package:ny_cricket_app/app/ui/pages/authentication/model/register_model.dart';
 import 'package:ny_cricket_app/app/ui/pages/home/model/fetch_events_model.dart';
 import 'package:ny_cricket_app/app/ui/pages/home/model/fetch_live_event_model.dart';
 import 'package:ny_cricket_app/app/ui/pages/home/model/get_quiz_model.dart';
